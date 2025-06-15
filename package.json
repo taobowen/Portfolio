@@ -1,0 +1,62 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "This is a tool to generate portfolio based with your markdown file",
+  "keywords": [
+    "portfolio",
+    "markdown"
+  ],
+  "homepage": "https://github.com/taobowen/Portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/taobowen/Portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taobowen/Portfolio.git"
+  },
+  "bin": {
+    "generate-portfolio": "./bin/index.js"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
+    "commander": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "express": "^5.1.0",
+    "framer-motion": "^12.16.0",
+    "fs-extra": "^11.1.1",
+    "gray-matter": "^4.0.3",
+    "html-loader": "^5.1.0",
+    "marked": "^15.0.12",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-flip-toolkit": "^7.2.4",
+    "react-icons": "^5.5.0",
+    "react-masonry-css": "^1.0.16",
+    "react-router-dom": "^7.6.2",
+    "style-loader": "^4.0.0",
+    "yargs": "^18.0.0"
+  },
+  "license": "ISC",
+  "author": "梁家河的扛麦郎",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf .parcel-cache dist",
+    "generate": "node ./bin/index.js generate",
+    "init": "node ./bin/index.js init",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "preview": "webpack serve --config ./webpack.config.js --mode development",
+    "serve": "serve ./dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^13.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "serve": "^14.2.4",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}
