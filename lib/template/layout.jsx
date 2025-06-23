@@ -1,8 +1,8 @@
-// Layout.jsx
 import React, { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { FiX, FiMenu } from "react-icons/fi";
-import './index.css';
+import { FiMenu, FiX } from "react-icons/fi";
+import "./index.css"; // adjust the path if needed
+import About from "./pages/About"; // adjust the path if needed
 
 export default function Layout({ rawList, setFilterCategory, setSortOrder, filterCategory, sortOrder }) {
   const [profileExpanded, setProfileExpanded] = useState(false);
@@ -19,9 +19,7 @@ export default function Layout({ rawList, setFilterCategory, setSortOrder, filte
           <div
             className="profile-text"
             onClick={() => {
-              if (location.pathname !== "/") {
-                navigate("/");
-              }
+              if (location.pathname !== "/") navigate("/");
             }}
             style={{ cursor: location.pathname !== "/" ? "pointer" : "default" }}
           >
@@ -33,7 +31,9 @@ export default function Layout({ rawList, setFilterCategory, setSortOrder, filte
         </div>
         <div className={`profile-content ${profileExpanded ? "profile-content-expanded" : ""}`}>
           <div className="profile-subtitle">About</div>
-          <div className="profile-subcontent">about me, my projects, and more.</div>
+          <div className="profile-subcontent">
+            <About />
+          </div>
           <div className="profile-subtitle">Filters</div>
           <div className="profile-subcontent">
             {['All', ...Array.from(new Set(rawList.map(project => project.category)))].map((category, index) => (

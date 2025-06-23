@@ -63,7 +63,35 @@ A detailed write-up here...
 
 You can also place an `index.png` as the **cover image** for the project.
 
-### 3. Update Global Settings
+
+### 3. Add an About Section
+
+To customize the "About" section in the sidebar, create a about.md file in the lib/ folder:
+
+```bash
+lib/about.md
+```
+
+Write your personal introduction in plain Markdown:
+
+
+```markdown
+# 👋 Hello!
+
+I'm Bowen, a developer passionate about building beautiful and functional software.
+
+- 🔭 I’m currently working on ski video AI analysis
+- 🌱 I’m exploring advanced motion estimation and pose modeling
+- 📫 Reach me at: taobowen.dev@gmail.com
+
+```
+
+This file will be converted into a React component and automatically injected into the sidebar of the layout.
+
+✅ You can even use raw HTML or <script>/<meta> tags in about.md for redirect or custom logic if needed.
+
+
+### 4. Update Global Settings
 
 Edit `lib/setting.json` to update:
 
@@ -78,7 +106,7 @@ Edit `lib/setting.json` to update:
 }
 ```
 
-### 4. Generate the Site
+### 5. Generate the Site
 
 Compile the markdown content and metadata into a static site:
 
@@ -86,7 +114,7 @@ Compile the markdown content and metadata into a static site:
 npm run generate
 ```
 
-### 5. Preview Locally
+### 6. Preview Locally
 
 Launch a local dev server to view and test:
 
@@ -96,7 +124,7 @@ npm run preview
 
 Visit: http://localhost:3000
 
-### 6. Build for Deployment
+### 7. Build for Deployment
 
 Compile final static assets using Webpack:
 
@@ -104,7 +132,7 @@ Compile final static assets using Webpack:
 npm run build
 ```
 
-### 7. Deploy to GitHub Pages
+### 8. Deploy to GitHub Pages
 
 You can push the contents of the `dist/` folder to your GitHub Pages repository:
 
