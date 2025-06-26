@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { generateSite, initMarkdown } from '../lib/generate.js';
+import { generateSite } from '../lib/generate.js';
+import { initMarkdown } from '../lib/init.js';
 import { previewSite } from '../lib/preview.js';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';

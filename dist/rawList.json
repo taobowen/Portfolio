@@ -1,11 +1,11 @@
 [
   {
-    "path": "/example",
-    "coverUrl": "./covers/example.png",
-    "title": "example",
+    "path": "/project",
+    "coverUrl": "./covers/project.png",
+    "title": "project",
     "description": "Describe your project here.",
     "category": "General",
-    "createDate": "",
-    "updateDate": ""
+    "createDate": "2025-06-26",
+    "updateDate": "2025-06-26"
   }
 ]

@@ -26,7 +26,7 @@ npm install
 Create a new project folder under `doc/` with starter content:
 
 ```bash
-npm run init -- my-project
+npm run init -- --folderName=my-project
 ```
 
 This creates:

@@ -1,7 +1,9 @@
-import example from "./pages/example.js";
+import MyProject from "./pages/MyProject.js";
+import Project from "./pages/Project.js";
 
 const pageMap = {
-  "/example": example,
+  "/MyProject": MyProject,
+  "/Project": Project,
 };
 
 export default pageMap;
