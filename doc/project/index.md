@@ -7,3 +7,5 @@ updateDate: 2025-06-26
 ---
 
 # project
+
+![image](./test.png)

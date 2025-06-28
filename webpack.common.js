@@ -45,6 +45,7 @@ export default {
       patterns: [
         { from: 'build/rawList.json', to: 'rawList.json' },
         { from: 'build/covers', to: 'covers' },
+        { from: 'build/assets', to: 'assets' },
       ],
     }),
   ],
