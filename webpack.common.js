@@ -4,49 +4,55 @@ import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const cwd = process.cwd();
+const __filename = fileURLToPath(import.meta.url); // path to current file
+const __dirname = path.dirname(__filename); 
 
-export default {
-  entry: './build/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js', // ✅ unique filename per chunk
-    clean: true,
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.html$/,
-        use: ['html-loader'],
-      },
-    ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './build/index.html',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'build/rawList.json', to: 'rawList.json' },
-        { from: 'build/covers', to: 'covers' },
-        { from: 'build/assets', to: 'assets' },
+
+export default function (targetDir = process.cwd()) {
+  return {
+    entry: path.resolve(__dirname, 'build', 'index.js'),
+    output: {
+      path: targetDir,
+      filename: '[name].[contenthash].js',
+      clean: true,
+    },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: 'babel-loader',
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|jpg|gif|svg)$/,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.html$/,
+          use: ['html-loader'],
+        },
       ],
-    }),
-  ],
-};
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'build', 'index.html'),
+        inject: 'body',
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, 'build/rawList.json'), to: 'rawList.json' },
+          { from: path.resolve(__dirname, 'build/covers'), to: 'covers' },
+          { from: path.resolve(__dirname, 'build/assets'), to: 'assets' },
+        ],
+      }),
+    ],
+  };
+}

@@ -1,6 +1,6 @@
 {
   "name": "portfolio-xs",
-  "version": "1.0.4",
+  "version": "1.2.0",
   "description": "This is a tool to generate portfolio based with your markdown file",
   "keywords": [
     "portfolio",
@@ -45,6 +45,7 @@
     "clean": "rm -rf .parcel-cache dist",
     "generate": "node ./bin/index.js generate",
     "init": "node ./bin/index.js init",
+    "add": "node ./bin/index.js add",
     "build": "webpack --config webpack.prod.js",
     "preview": "webpack serve --config webpack.dev.js",
     "serve": "webpack serve --config webpack.prod.js"
