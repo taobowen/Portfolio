@@ -18,10 +18,11 @@ const __dirname = path.dirname(__filename);
 
 const pkg = JSON.parse(readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
 const projectRoot = path.join(__dirname, '..');
-const webpackBin = path.join(projectRoot, 'node_modules', '.bin', 'webpack');
+
+const webpackBin = path.resolve(__dirname, '../node_modules/webpack/bin/webpack.js'); 
 
 yargs(hideBin(process.argv))
-  .scriptName('generate-portfolio')
+  .scriptName('portfolio')
   .usage('$0 <command> [options]')
   .command('generate', 'Generate the portfolio site', (yargs) => {
     return yargs.option('config', {
@@ -33,11 +34,42 @@ yargs(hideBin(process.argv))
   }, (argv) => {
     generateSite(argv.config);
   })
-  .command('preview', 'Preview the portfolio site locally', {}, () => {
-     spawnSync(webpackBin, ['serve', '--config', 'webpack.dev.js'], {
+  // .command('preview', 'Preview the portfolio site locally', {}, () => {
+  //    spawnSync(webpackBin, ['serve', '--config', 'webpack.dev.js', '--env', `target=${cwd}`], {
+  //     stdio: 'inherit',
+  //     cwd: projectRoot
+  //   });
+  // })
+  .command('preview', 'Bundle and preview the site locally', {}, () => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const configPath = path.resolve(__dirname, '../webpack.prod.js');
+
+    console.log('📦 Bundling website using webpack...');
+    const webpackCommand = `npx webpack --config "${configPath}" --env target=${cwd}`;
+    const result = spawnSync(webpackCommand, {
+      cwd: __dirname,
       stdio: 'inherit',
-      cwd: projectRoot
+      shell: true,
     });
+
+
+    if (result.status !== 0) {
+      console.error('❌ Webpack build failed');
+      process.exit(1);
+    }
+
+    console.log('🚀 Starting local preview server...');
+    const serverProcess = spawnSync('node', ['./lib/preview.js'], {
+      cwd: __dirname,
+      stdio: 'inherit',
+      shell: true,
+    });
+
+    if (serverProcess.status !== 0) {
+      console.error('❌ Failed to start preview server');
+      process.exit(1);
+    }
   })
   .command('init', 'Initialize about.md in current folder and doc folder', {}, () => {
     initAboutPage();
