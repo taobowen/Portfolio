@@ -4,12 +4,10 @@ Generate a beautiful and customizable portfolio site from Markdown files — fas
 
 ## 📦 Installation
 
-Clone the repo and install dependencies:
+Download this package:
 
 ```bash
-git clone https://github.com/taobowen/Portfolio.git
-cd Portfolio
-npm install
+npm install portfolio-xs -g
 ```
 
 ## ✨ Features
@@ -26,19 +24,28 @@ npm install
 Create a new project folder under `doc/` with starter content:
 
 ```bash
-npm run init -- --folderName=my-project
+portfolio init
 ```
 
 This creates:
 
 ```
-doc/my-project/
-└── index.md      # editable content
+my-project/
+|── about.md      # editable content
+└── doc
 ```
 
-### 2. Customize the Markdown
+### 2. Add your project
 
-Open `doc/my-project/index.md` and update the frontmatter and content:
+Add your new project under the doc fold:
+
+```bash
+portfolio add 'The name of your project'
+```
+
+### 3. Customize the Markdown
+
+Open `my-project/doc` and update the frontmatter and content:
 
 ```markdown
 ---
@@ -48,6 +55,18 @@ category: Web
 createDate: 2024-06-10
 updateDate: 2024-06-12
 ---
+
+### 4. Generate html file based on the markdown file
+
+```bash
+portfolio generate
+```
+
+### 5. Preview your generated portfolio
+
+```bash
+portfolio preview
+```
 
 # My Project
 
@@ -111,7 +130,7 @@ Edit `lib/setting.json` to update:
 Compile the markdown content and metadata into a static site:
 
 ```bash
-npm run generate
+portfolio generate
 ```
 
 ### 6. Preview Locally
@@ -119,7 +138,7 @@ npm run generate
 Launch a local dev server to view and test:
 
 ```bash
-npm run preview
+portfolio preview
 ```
 
 Visit: http://localhost:3000
@@ -129,7 +148,7 @@ Visit: http://localhost:3000
 Compile final static assets using Webpack:
 
 ```bash
-npm run build
+portfolio build
 ```
 
 ### 8. Deploy to GitHub Pages
@@ -148,11 +167,11 @@ git push origin main
 
 | Command            | Description                                 |
 |--------------------|---------------------------------------------|
-| `npm run init`     | Create a new markdown project               |
-| `npm run generate` | Convert markdown into React components      |
-| `npm run preview`  | Start local development server              |
-| `npm run build`    | Build static files for deployment           |
-| `npm run serve`    | Preview production build locally            |
+| `portfolio init`     | Create a new markdown project               |
+| `portfolio add 'The name of your project'`  | Add your new project under the doc fold              |
+| `portfolio generate` | Convert markdown into React components and Build static files for deployment     |
+| `portfolio preview`  | Start local development server              |
+| `portfolio build`  | Compile final static assets using Webpack              |
 
 ## 👨‍💻 Author
 

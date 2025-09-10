@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './index.css'; // Assuming you have styles for the project card
 
 export default function ProjectCard({ project }) {
   const navigate = useNavigate();

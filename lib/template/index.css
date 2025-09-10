@@ -89,16 +89,63 @@ a {
 }
 
 .profile-text {
+    position: relative;
     font-size: 1.4rem;
+    cursor: pointer;
     transition: all .6s ease-in-out;
 }
 
+.profile-text:before {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    visibility: hidden;
+    transition: all .3s ease-in-out 0s;
+}
+
+.profile-text:hover:before {
+    visibility: visible;
+}
+
+@media (max-width: 767px), (min-width: 768px) and (max-width: 958px) and (orientation: portrait) {
+    .profile-text:before {
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+    }
+}
+
+@media (max-width: 767px), (min-width: 768px) and (max-width: 958px) and (orientation: portrait) {
+    .profile-text:hover:before {
+        transform: scaleX(1);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 958px) and (orientation: landscape), (min-width: 958px) {
+    .profile-text:before {
+        height: 100%;
+        width: 2px;
+        top: 0;
+        left: 0;
+        transform: scaleY(0);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 958px) and (orientation: landscape), (min-width: 958px) {
+    .profile-text:hover:before {
+        transform: scaleY(1);
+    }
+}
+
 .profile-icon {
+    transition: all .3s ease-in-out;
     color: #4a4a4a;
     border: 1px solid transparent;
     border-radius: 4px;
     padding: .5rem;
-    height: 2rem;
+    line-height: 0;
     cursor: pointer;
 }
 
@@ -196,14 +243,14 @@ a {
 
 @media (min-width: 958px) {
     .template {
-        padding-left: 5.3rem;
+        padding-left: 5rem;
         padding-bottom: 0;
     }
 
     .profile {
         left: 0;
         height: 100%;
-        width: 5.3rem;
+        width: 5rem;
         flex-direction: row;
     }
 
@@ -214,6 +261,7 @@ a {
     .profile-content {
         height: 100%;
         width: 0;
+        overflow: scroll;
     }
 
     .profile-content-expanded {
@@ -227,12 +275,33 @@ a {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        flex-grow: 0;
+        flex-shrink: 0;
         height: 100%;
-        width: auto;
+        width: 2.5rem;
     }
 
     .profile-text {
         text-orientation: mixed;
         writing-mode: vertical-rl;
     }
+}
+
+.mark-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    unicode-bidi: isolate;
+    background-color: #f5f5f5;
+    border-left: 5px solid #dbdbdb;
+    padding: 1.25em 1.5em;
+    word-break: break-word;
 }

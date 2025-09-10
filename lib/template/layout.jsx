@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import "./index.css"; // adjust the path if needed
-import About from "./pages/About"; // adjust the path if needed
+import About from "./pages/About";
 
 export default function Layout({ rawList, setFilterCategory, setSortOrder, filterCategory, sortOrder }) {
   const [profileExpanded, setProfileExpanded] = useState(false);
@@ -19,9 +18,12 @@ export default function Layout({ rawList, setFilterCategory, setSortOrder, filte
           <div
             className="profile-text"
             onClick={() => {
-              if (location.pathname !== "/") navigate("/");
+              if (location.pathname !== "/") {
+                navigate("/");
+              } else {
+                toggleProfile();
+              }
             }}
-            style={{ cursor: location.pathname !== "/" ? "pointer" : "default" }}
           >
             {location.pathname === "/" ? "Portfolio" : "Back to Home"}
           </div>

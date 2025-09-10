@@ -77,7 +77,7 @@ export default function App() {
                             }
                           })
                           .map((project) => (
-                            <Flipped key={project.id} flipId={project.id} id={project.id}>
+                            <Flipped key={project.path} flipId={project.path} id={project.path}>
                               <ProjectCard project={project} />
                             </Flipped>
                           ))}
